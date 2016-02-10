@@ -81,6 +81,7 @@ class TritechMicron(object):
         self.scanright = True
         self.speed = 1500.0
         self.step = Resolution.LOW
+        self.dynamic_reconfigure_started = False
 
         # Override defaults with key-word arguments or ROS parameters.
         for key, value in self.__dict__.iteritems():
