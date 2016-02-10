@@ -765,14 +765,17 @@ class TritechMicron(object):
 
         # Decode HeadInf byte.
         head_inf = payload.read(8)
-        self.recentering = head_inf[0]
-        self.centred = head_inf[1]
-        self.motoring = head_inf[2]
-        self.motor_on = head_inf[3]
-        self.scanright = head_inf[4]
-        self.scanning = head_inf[5]
-        self.no_params = head_inf[6]
-        self.has_cfg = head_inf[7]
+        self.recentering = head_inf[7]
+        self.centred = head_inf[6]
+        self.motoring = head_inf[5]
+        self.motor_on = head_inf[4]
+        self.scanright = head_inf[3]
+        self.scanning = head_inf[2]
+        self.no_params = head_inf[1]
+        # self.has_cfg = head_inf[0]
+        # bypass the has_cfg parameter since we don't send mtSendBBUser
+        self.has_cfg = True
+
 
         rospy.loginfo("UP TIME:     %s", self.up_time)
         rospy.logdebug("RECENTERING: %s", self.recentering)
