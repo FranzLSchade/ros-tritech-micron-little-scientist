@@ -32,19 +32,17 @@ def reconfigure(config, level):
 
     # Prevent it to reconfigure for the first time
     if sonar.dynamic_reconfigure_started is False:
-
         sonar.dynamic_reconfigure_started = True
+        return config
 
-    else:
-        rospy.loginfo("Reconfiguring sonar")
-        rospy.logdebug("Configuration requested: %r, %r", config, level)
+    rospy.loginfo("Reconfiguring sonar")
+    rospy.logdebug("Configuration requested: %r, %r", config, level)
 
-        # Remove additional keys.
-        if "groups" in config:
-            config.pop("groups")
+    # Remove additional keys.
+    if "groups" in config:
+        config.pop("groups")
 
-        # Set parameters.
-        sonar.set(**config)
+    sonar.set(**config)
 
     return config
 
