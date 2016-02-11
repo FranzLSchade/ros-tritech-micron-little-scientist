@@ -72,7 +72,7 @@ class TritechMicron(object):
         self.adc8on = True
         self.continuous = True
         self.gain = 0.50
-        self.inverted = False
+        self.inverted = True
         self.left_limit = to_radians(2400)
         self.mo_time = 250
         self.nbins = 400
