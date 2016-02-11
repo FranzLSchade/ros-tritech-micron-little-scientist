@@ -150,7 +150,7 @@ class TritechMicron(object):
         self.set(force=True)
 
         # Wait for settings to go through.
-        while not self.has_cfg or self.no_params:
+        while not self.has_cfg or self.no_params or not self.motor_on or not self.centred:
             rospy.loginfo(
                 "Waiting for configuration: (HAS CFG: %s, NO PARAMS: %s)",
                 self.has_cfg, self.no_params
